@@ -1,6 +1,6 @@
 //---------------------------------------------------------->
 //  MainWindow.h file.
-//  Author: Jayakrishnan P.
+//  Author     : Jayakrishnan P.
 //  Last Edited: 26/06/2022
 //---------------------------------------------------------->
 #ifndef MAINWINDOW_H
@@ -20,14 +20,16 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private:
     Ui::MainWindow *ui;
     int GetLargerString(int,int);
     bool m_oneBig = false;
     bool m_twoBig = false;
     bool m_sameSize = false;
+
 private slots:
     void OnClickBtnCompare();
-
+    void ShowHighlighterDlg();
 };
 #endif // MAINWINDOW_H

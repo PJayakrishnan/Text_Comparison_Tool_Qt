@@ -1,10 +1,11 @@
 //---------------------------------------------------------->
 //  MainWindow.cpp file.
-//  Author: Jayakrishnan P.
+//  Author     : Jayakrishnan P.
 //  Last Edited: 26/06/2022
 //---------------------------------------------------------->
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "highlightcolor.h"
 
 #include <QMessageBox>
 #include  <QList>
@@ -113,6 +114,18 @@ void MainWindow::OnClickBtnCompare()
         cursorText2.setPosition(differenceList[i] + 1,QTextCursor::KeepAnchor);
         cursorText2.setCharFormat(background2);
     }
+}
+
+//---------------------------------------------------------->
+//  Function Name: MainWindow::ShowHighlighterDlg.
+//  Return Type  : void.
+//  Parameters   : None.
+//  Remarks      : Creates dialog for highlighting color settings.
+//---------------------------------------------------------->
+void MainWindow::ShowHighlighterDlg()
+{
+    HighlightColor* highlighter = new HighlightColor();
+    highlighter->show();
 }
 
 //---------------------------------------------------------->

@@ -59,8 +59,20 @@
      <height>26</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionHighlight_Color"/>
+   </widget>
+   <addaction name="menuSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionHighlight_Color">
+   <property name="text">
+    <string>Highlight Color</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -80,8 +92,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionHighlight_Color</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>ShowHighlighterDlg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>453</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>OnClickBtnCompare()</slot>
+  <slot>ShowHighlighterDlg()</slot>
  </slots>
 </ui>
