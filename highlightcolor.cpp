@@ -42,3 +42,15 @@ void HighlightColor::HighlighterDlgBtnClose()
     this->close();
 }
 
+
+void HighlightColor::ColorChanged1(QString color)
+{
+    m_pMnWindow->SetHighlighterColor1(color);
+}
+
+
+void HighlightColor::ColorChanged2(QString color)
+{
+    m_pMnWindow->SetHighlighterColor2(color);
+}
+

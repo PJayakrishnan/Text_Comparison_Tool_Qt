@@ -96,7 +96,7 @@
    <sender>cmbText1Color</sender>
    <signal>currentTextChanged(QString)</signal>
    <receiver>HighlightColor</receiver>
-   <slot>Colorchanged()</slot>
+   <slot>ColorChanged1(QString)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>249</x>
@@ -108,8 +108,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>cmbText2Color</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>HighlightColor</receiver>
+   <slot>ColorChanged2(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>249</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>HighlighterDlgBtnClose()</slot>
+  <slot>ColorChanged1(QString)</slot>
+  <slot>ColorChanged2(QString)</slot>
  </slots>
 </ui>

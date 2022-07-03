@@ -8,6 +8,7 @@
 
 #include <QMainWindow>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -19,7 +20,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void SetHighlighterColor1(QString);
+    void SetHighlighterColor2(QString);
 
 private:
     Ui::MainWindow *ui;
@@ -27,9 +29,12 @@ private:
     bool m_oneBig = false;
     bool m_twoBig = false;
     bool m_sameSize = false;
+    QColor m_txtBox1Color, m_txtBox2Color;
 
 private slots:
     void OnClickBtnCompare();
     void ShowHighlighterDlg();
+
+
 };
 #endif // MAINWINDOW_H

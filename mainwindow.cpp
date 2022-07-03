@@ -7,9 +7,11 @@
 #include "ui_mainwindow.h"
 #include "highlightcolor.h"
 
+
 #include <QMessageBox>
 #include  <QList>
 #include  <QVector>
+#include  <QObject>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("Text Comparison Tool");
+    m_txtBox1Color = Qt::yellow;
+    m_txtBox2Color = Qt::yellow;
 }
 
 MainWindow::~MainWindow()
@@ -80,8 +84,8 @@ void MainWindow::OnClickBtnCompare()
 
     QTextCharFormat backgroundClear, background1, background2;
     backgroundClear.clearBackground();
-    background1.setBackground(Qt::yellow);
-    background2.setBackground(Qt::green);
+    background1.setBackground(m_txtBox1Color);
+    background2.setBackground(m_txtBox2Color);
 
 
 
@@ -158,5 +162,43 @@ int MainWindow::GetLargerString(int text1Size, int text2Size)
         m_oneBig = false;
         m_sameSize = true;
         return text1Size;
+    }
+}
+void MainWindow::SetHighlighterColor1(QString color)
+{
+    if(color == "Red")
+    {
+       m_txtBox1Color = Qt::red;
+    }
+    else if(color == "Yellow")
+    {
+        m_txtBox1Color = Qt::yellow;
+    }
+    else if(color == "Green")
+    {
+        m_txtBox1Color = Qt::green;
+    }
+    else if(color == "Blue")
+    {
+        m_txtBox1Color = Qt::blue;
+    }
+}
+void MainWindow::SetHighlighterColor2(QString color)
+{
+    if(color == "Red")
+    {
+       m_txtBox2Color = Qt::red;
+    }
+    else if(color == "Yellow")
+    {
+        m_txtBox2Color = Qt::yellow;
+    }
+    else if(color == "Green")
+    {
+        m_txtBox2Color = Qt::green;
+    }
+    else if(color == "Blue")
+    {
+        m_txtBox2Color = Qt::blue;
     }
 }

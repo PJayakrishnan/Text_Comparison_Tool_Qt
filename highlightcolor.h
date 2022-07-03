@@ -7,6 +7,7 @@
 #define HIGHLIGHTCOLOR_H
 
 #include <QDialog>
+#include "mainwindow.h"
 
 namespace Ui {
 class HighlightColor;
@@ -22,9 +23,12 @@ public:
 
 private:
     Ui::HighlightColor *ui;
+    MainWindow* m_pMnWindow;
 
 private slots:
     void HighlighterDlgBtnClose();
+    void ColorChanged1(QString);
+    void ColorChanged2(QString);
 
 };
 
