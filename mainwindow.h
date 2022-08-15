@@ -1,7 +1,7 @@
 //---------------------------------------------------------->
 //  MainWindow.h file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 26/06/2022
+//  Last Edited: 15/08/2022
 //---------------------------------------------------------->
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
@@ -30,6 +30,8 @@ private:
     bool m_twoBig = false;
     bool m_sameSize = false;
     QColor m_txtBox1Color, m_txtBox2Color;
+    QColor GetColor(QString);
+    void ClearAll();
 
 private slots:
     void OnClickBtnCompare();

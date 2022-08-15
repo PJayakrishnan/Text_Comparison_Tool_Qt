@@ -64,6 +64,7 @@
      <string>Settings</string>
     </property>
     <addaction name="actionHighlight_Color"/>
+    <addaction name="actionClear_All"/>
    </widget>
    <addaction name="menuSettings"/>
   </widget>
@@ -71,6 +72,11 @@
   <action name="actionHighlight_Color">
    <property name="text">
     <string>Highlight Color</string>
+   </property>
+  </action>
+  <action name="actionClear_All">
+   <property name="text">
+    <string>Clear All</string>
    </property>
   </action>
  </widget>
@@ -108,9 +114,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionClear_All</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>ClearAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>453</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>OnClickBtnCompare()</slot>
   <slot>ShowHighlighterDlg()</slot>
+  <slot>ClearAll()</slot>
  </slots>
 </ui>

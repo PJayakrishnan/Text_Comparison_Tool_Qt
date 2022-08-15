@@ -1,7 +1,7 @@
 //---------------------------------------------------------->
 //  highlightcolor.h file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 26/06/2022
+//  Last Edited: 15/08/2022
 //---------------------------------------------------------->
 #ifndef HIGHLIGHTCOLOR_H
 #define HIGHLIGHTCOLOR_H
@@ -18,7 +18,7 @@ class HighlightColor : public QDialog
     Q_OBJECT
 
 public:
-    explicit HighlightColor(QWidget *parent = nullptr);
+    explicit HighlightColor(MainWindow* wnd, QWidget *parent = nullptr);
     ~HighlightColor();
 
 private:

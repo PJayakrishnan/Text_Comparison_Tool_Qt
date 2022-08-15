@@ -1,7 +1,7 @@
 //---------------------------------------------------------->
 //  MainWindow.cpp file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 26/06/2022
+//  Last Edited: 15/08/2022
 //---------------------------------------------------------->
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("Text Comparison Tool");
     m_txtBox1Color = Qt::yellow;
-    m_txtBox2Color = Qt::yellow;
+    m_txtBox2Color = Qt::green;
 }
 
 MainWindow::~MainWindow()
@@ -128,7 +128,7 @@ void MainWindow::OnClickBtnCompare()
 //---------------------------------------------------------->
 void MainWindow::ShowHighlighterDlg()
 {
-    HighlightColor* highlighter = new HighlightColor();
+    HighlightColor* highlighter = new HighlightColor(this);
     highlighter->show();
 }
 
@@ -164,41 +164,63 @@ int MainWindow::GetLargerString(int text1Size, int text2Size)
         return text1Size;
     }
 }
+
+//---------------------------------------------------------->
+//  Function Name: MainWindow::SetHighlighterColor1.
+//  Return Type  : void.
+//  Parameters   : QString - Color name.
+//  Remarks      : Set color.
+//---------------------------------------------------------->
 void MainWindow::SetHighlighterColor1(QString color)
 {
-    if(color == "Red")
-    {
-       m_txtBox1Color = Qt::red;
-    }
-    else if(color == "Yellow")
-    {
-        m_txtBox1Color = Qt::yellow;
-    }
-    else if(color == "Green")
-    {
-        m_txtBox1Color = Qt::green;
-    }
-    else if(color == "Blue")
-    {
-        m_txtBox1Color = Qt::blue;
-    }
+    m_txtBox1Color = GetColor(color);
 }
+
+//---------------------------------------------------------->
+//  Function Name: MainWindow::SetHighlighterColor2.
+//  Return Type  : void.
+//  Parameters   : QString - Color name.
+//  Remarks      : Set color.
+//---------------------------------------------------------->
 void MainWindow::SetHighlighterColor2(QString color)
+{
+    m_txtBox2Color = GetColor(color);
+}
+
+//---------------------------------------------------------->
+//  Function Name: MainWindow::GetColor.
+//  Return Type  : QColor.
+//  Parameters   : QString - Color name.
+//  Remarks      : Returns a color corresponding to given color name.
+//---------------------------------------------------------->
+QColor MainWindow::GetColor(QString color)
 {
     if(color == "Red")
     {
-       m_txtBox2Color = Qt::red;
+       return Qt::red;
     }
     else if(color == "Yellow")
     {
-        m_txtBox2Color = Qt::yellow;
+        return Qt::yellow;
     }
     else if(color == "Green")
     {
-        m_txtBox2Color = Qt::green;
+        return Qt::green;
     }
     else if(color == "Blue")
     {
-        m_txtBox2Color = Qt::blue;
+        return Qt::blue;
     }
+}
+
+//---------------------------------------------------------->
+//  Function Name: MainWindow::ClearAll.
+//  Return Type  : void.
+//  Parameters   : None.
+//  Remarks      : Clears both the text boxes.
+//---------------------------------------------------------->
+void MainWindow::ClearAll()
+{
+    ui->textEdit1->setText("");
+    ui->textEdit2->setText("");
 }
