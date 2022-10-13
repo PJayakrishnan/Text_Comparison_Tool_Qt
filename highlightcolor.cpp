@@ -1,10 +1,11 @@
 //---------------------------------------------------------->
 //  highlightcolor.cpp file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 15/08/2022
+//  Last Edited: 13/10/2022
 //---------------------------------------------------------->
 #include "highlightcolor.h"
 #include "ui_highlightcolor.h"
+#include <QMessageBox>
 
 
 HighlightColor::HighlightColor(MainWindow* wnd, QWidget *parent) :
@@ -26,8 +27,8 @@ HighlightColor::HighlightColor(MainWindow* wnd, QWidget *parent) :
     ui->cmbText2Color->addItem("Yellow");
     ui->cmbText2Color->addItem("Blue");
 
-    connect(ui->cmbText1Color,SIGNAL(currentTextChanged(QString)),this,SLOT(ColorChanged1(QString)));
-    connect(ui->cmbText2Color,SIGNAL(currentTextChanged(QString)),this,SLOT(ColorChanged2(QString)));
+    connect(ui->cmbText1Color,SIGNAL(currentTextChanged(QString)),this,SLOT(TextBox1ColorChanged(QString)));
+    connect(ui->cmbText2Color,SIGNAL(currentTextChanged(QString)),this,SLOT(TextBox2ColorChanged(QString)));
 }
 
 HighlightColor::~HighlightColor()
@@ -47,24 +48,22 @@ void HighlightColor::HighlighterDlgBtnClose()
 }
 
 //---------------------------------------------------------->
-//  Function Name: HighlightColor::ColorChanged1.
+//  Function Name: HighlightColor::TextBox1ColorChanged.
 //  Return Type  : void.
-//  Parameters   : QString - color name.
-//  Remarks      : Set color 1.
+//  Parameters   : None.
+//  Remarks      : Set color to registry.
 //---------------------------------------------------------->
-void HighlightColor::ColorChanged1(QString color)
+void HighlightColor::TextBox1ColorChanged(QString color)
 {
-    m_pMnWindow->SetHighlighterColor1(color);
 }
 
 //---------------------------------------------------------->
-//  Function Name: HighlightColor::ColorChanged2.
+//  Function Name: HighlightColor::TextBox2ColorChanged.
 //  Return Type  : void.
-//  Parameters   : QString - color name.
-//  Remarks      : Set color 2.
+//  Parameters   : None.
+//  Remarks      : Set color to registry.
 //---------------------------------------------------------->
-void HighlightColor::ColorChanged2(QString color)
+void HighlightColor::TextBox2ColorChanged(QString color)
 {
-    m_pMnWindow->SetHighlighterColor2(color);
 }
 

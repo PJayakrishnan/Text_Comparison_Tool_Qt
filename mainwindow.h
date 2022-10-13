@@ -1,7 +1,7 @@
 //---------------------------------------------------------->
 //  MainWindow.h file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 15/08/2022
+//  Last Edited: 13/10/2022
 //---------------------------------------------------------->
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
@@ -20,23 +20,24 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void SetHighlighterColor1(QString);
-    void SetHighlighterColor2(QString);
+
 
 private:
     Ui::MainWindow *ui;
-    int GetLargerString(int,int);
-    bool m_oneBig = false;
-    bool m_twoBig = false;
-    bool m_sameSize = false;
+
     QColor m_txtBox1Color, m_txtBox2Color;
     QColor GetColor(QString);
-    void ClearAll();
 
 private slots:
     void OnClickBtnCompare();
     void ShowHighlighterDlg();
 
+    void ClearAll();
+
+public slots:
+
+    void SetHighlighterColor1(QString);
+    void SetHighlighterColor2(QString);
 
 };
 #endif // MAINWINDOW_H

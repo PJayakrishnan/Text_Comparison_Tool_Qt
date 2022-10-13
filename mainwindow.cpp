@@ -1,7 +1,7 @@
 //---------------------------------------------------------->
 //  MainWindow.cpp file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 15/08/2022
+//  Last Edited: 13/10/2022
 //---------------------------------------------------------->
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -16,11 +16,13 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_txtBox1Color()
+    , m_txtBox2Color(Qt::green)
 {
     ui->setupUi(this);
     setWindowTitle("Text Comparison Tool");
-    m_txtBox1Color = Qt::yellow;
-    m_txtBox2Color = Qt::green;
+
+
 }
 
 MainWindow::~MainWindow()
@@ -48,18 +50,40 @@ void MainWindow::OnClickBtnCompare()
     QList<int> differenceList;
 
 
-    int larger = GetLargerString(text1.length(),text2.length());
+   int larger = 0;
+   bool oneIsBig = false;
+   bool twoIsBig = false;
+    if(text1.length() > text2.length())
+    {
+        twoIsBig = false;
+        oneIsBig = true;
+        larger = text1.length();
+    }
+
+    if(text1.length() < text2.length())
+    {
+        twoIsBig = true;
+        oneIsBig = false;
+        larger = text2.length();
+    }
+
+    if(text1.length() == text2.length())
+    {
+        twoIsBig = false;
+        oneIsBig = false;
+        larger = text1.length();
+    }
 
 
-    //Filling rest of smaller array with '\0'.
-    if(m_oneBig == true)
+    //Filling rest of smaller array with ' '.
+    if(oneIsBig == true)
     {
         for(int i = text2.length(); i < text1.length();i++)
         {
             text2.append(' ');
         }
     }
-    if(m_twoBig == true)
+    if(twoIsBig == true)
     {
         for(int i = text1.length(); i < text2.length();i++)
         {
@@ -132,38 +156,7 @@ void MainWindow::ShowHighlighterDlg()
     highlighter->show();
 }
 
-//---------------------------------------------------------->
-//  Function Name: MainWindow::GetLargerString.
-//  Return Type  : integer.
-//  Parameters   : (2) inetegers. Size of text one and size of text two.
-//  Remarks      : This function returns largest among two string sizes.
-//---------------------------------------------------------->
-int MainWindow::GetLargerString(int text1Size, int text2Size)
-{
-    if(text1Size > text2Size)
-    {
-        m_twoBig = false;
-        m_oneBig = true;
-        m_sameSize = false;
-        return text1Size;
-    }
 
-    if(text1Size < text2Size)
-    {
-        m_twoBig = true;
-        m_oneBig = false;
-        m_sameSize = false;
-        return text2Size;
-    }
-
-    if(text1Size == text2Size)
-    {
-        m_twoBig = false;
-        m_oneBig = false;
-        m_sameSize = true;
-        return text1Size;
-    }
-}
 
 //---------------------------------------------------------->
 //  Function Name: MainWindow::SetHighlighterColor1.
@@ -187,6 +180,7 @@ void MainWindow::SetHighlighterColor2(QString color)
     m_txtBox2Color = GetColor(color);
 }
 
+
 //---------------------------------------------------------->
 //  Function Name: MainWindow::GetColor.
 //  Return Type  : QColor.
@@ -195,6 +189,7 @@ void MainWindow::SetHighlighterColor2(QString color)
 //---------------------------------------------------------->
 QColor MainWindow::GetColor(QString color)
 {
+    QMessageBox::information(this," ",color);
     if(color == "Red")
     {
        return Qt::red;
@@ -207,7 +202,7 @@ QColor MainWindow::GetColor(QString color)
     {
         return Qt::green;
     }
-    else if(color == "Blue")
+    else
     {
         return Qt::blue;
     }
@@ -215,12 +210,15 @@ QColor MainWindow::GetColor(QString color)
 
 //---------------------------------------------------------->
 //  Function Name: MainWindow::ClearAll.
-//  Return Type  : void.
+//  Return Type  : VOID.
 //  Parameters   : None.
-//  Remarks      : Clears both the text boxes.
+//  Remarks      : Clears the text boxes.
 //---------------------------------------------------------->
 void MainWindow::ClearAll()
 {
-    ui->textEdit1->setText("");
-    ui->textEdit2->setText("");
+    ui->textEdit1->clear();
+    ui->textEdit2->clear();
 }
+
+
+
