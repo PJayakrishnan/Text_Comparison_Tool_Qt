@@ -20,10 +20,22 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QTextEdit" name="textEdit1"/>
+         <widget class="QTextEdit" name="textEdit1">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit2"/>
+         <widget class="QTextEdit" name="textEdit2">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

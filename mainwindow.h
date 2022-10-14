@@ -1,7 +1,7 @@
 //---------------------------------------------------------->
 //  MainWindow.h file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 13/10/2022
+//  Last Edited: 14/10/2022
 //---------------------------------------------------------->
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
@@ -36,8 +36,6 @@ private slots:
 
 public slots:
 
-    void SetHighlighterColor1(QString);
-    void SetHighlighterColor2(QString);
 
 };
 #endif // MAINWINDOW_H

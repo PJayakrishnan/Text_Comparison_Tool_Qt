@@ -1,7 +1,7 @@
 //---------------------------------------------------------->
 //  highlightcolor.cpp file.
 //  Author     : Jayakrishnan P.
-//  Last Edited: 13/10/2022
+//  Last Edited: 14/10/2022
 //---------------------------------------------------------->
 #include "highlightcolor.h"
 #include "ui_highlightcolor.h"
@@ -17,15 +17,17 @@ HighlightColor::HighlightColor(MainWindow* wnd, QWidget *parent) :
     m_pMnWindow = wnd;
 
     //Initializing combo box.
-    ui->cmbText1Color->addItem("Red");
-    ui->cmbText1Color->addItem("Green");
-    ui->cmbText1Color->addItem("Yellow");
-    ui->cmbText1Color->addItem("Blue");
+    ui->cmbText1Color->addItem("");
+    ui->cmbText1Color->addItem("red");
+    ui->cmbText1Color->addItem("green");
+    ui->cmbText1Color->addItem("yellow");
+    ui->cmbText1Color->addItem("blue");
 
-    ui->cmbText2Color->addItem("Red");
-    ui->cmbText2Color->addItem("Green");
-    ui->cmbText2Color->addItem("Yellow");
-    ui->cmbText2Color->addItem("Blue");
+    ui->cmbText2Color->addItem("");
+    ui->cmbText2Color->addItem("red");
+    ui->cmbText2Color->addItem("green");
+    ui->cmbText2Color->addItem("yellow");
+    ui->cmbText2Color->addItem("blue");
 
     connect(ui->cmbText1Color,SIGNAL(currentTextChanged(QString)),this,SLOT(TextBox1ColorChanged(QString)));
     connect(ui->cmbText2Color,SIGNAL(currentTextChanged(QString)),this,SLOT(TextBox2ColorChanged(QString)));
@@ -55,6 +57,10 @@ void HighlightColor::HighlighterDlgBtnClose()
 //---------------------------------------------------------->
 void HighlightColor::TextBox1ColorChanged(QString color)
 {
+    QSettings settings("JK", "Text Comparison Tool");
+    settings.beginGroup("Highlight Color");
+    settings.setValue("color_one", color);
+    settings.endGroup();
 }
 
 //---------------------------------------------------------->
@@ -65,5 +71,9 @@ void HighlightColor::TextBox1ColorChanged(QString color)
 //---------------------------------------------------------->
 void HighlightColor::TextBox2ColorChanged(QString color)
 {
+    QSettings settings("JK", "Text Comparison Tool");
+    settings.beginGroup("Highlight Color");
+    settings.setValue("color_two", color);
+    settings.endGroup();
 }
 
